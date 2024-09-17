@@ -33,13 +33,18 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-    const {email, password} = req.body;
+    const {name,email, password} = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     await prisma.user.create({
         data: {
+            name,
             email,
             password: hashedPassword
         }
     });
+    console.log("User created Successfully");
     res.redirect('/login');
 });
+
+
+module.exports = router;

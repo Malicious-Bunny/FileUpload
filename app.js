@@ -5,9 +5,12 @@ const expressSession = require('express-session');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
 const path = require('path');
+const authRouter = require('./routes/auth');
+const logger = require('morgan');
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
+app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
@@ -37,6 +40,6 @@ app.use(express.urlencoded({ extended: false }));
 
 
 
-app.get("/", (req, res) => res.render("index"));
+app.use('/', authRouter);
 
 app.listen(3000, () => console.log("Server is running at link: http://localhost:3000"));
