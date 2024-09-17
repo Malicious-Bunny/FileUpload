@@ -39,7 +39,9 @@ async function folderControllerPostWithID(req, res){
             folderId: folderID,
             name: file.originalname,
             link: file.path,
-            userId: userID
+            userId: userID,
+            size: file.size,
+            
         }
     });
     console.log(newFile);

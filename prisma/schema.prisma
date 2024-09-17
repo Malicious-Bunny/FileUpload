@@ -50,4 +50,6 @@ model File {
   userId    Int
   user      User   @relation(fields: [userId], references: [id])
   link      String
+  createdAt DateTime @default(now())
+  size      Int  @default(0)
 }
