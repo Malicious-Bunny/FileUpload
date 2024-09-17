@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folders</title>
+</head>
+<body>
+    <h1> 📁 <%= name %></h1>
+
+    <% if(!files || files.length < 1){ %>
+        <p>No files found</p>
+    <% } %>
+    <% if (files) {%>
+        <ul>
+            <% files.forEach(file => { %>
+                <li><a href="/file/<%= file.id %>"><%= file.name %></a></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <h4>Upload a file</h4>
+
+    <form action="/folder/<%= id %>" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload file</button>
+    </form>
+</body>
+</html>

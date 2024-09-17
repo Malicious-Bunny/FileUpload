@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+
+    <h1>Welcome <%= username %> to file uploader</h1>
+
+    <% if(!folders || folders.length < 1){ %>
+        <p>No folders found</p>
+    <% } %>
+   <% if (folders) {%>
+        <ul>
+            <% folders.forEach(folder => { %>
+                <li><a href="/folder/<%= folder.id %>">📁 <%= folder.name %></a></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <h4>Create a folder</h4>
+    <form action="/home" method="post">
+        <input type="text" name="folder" placeholder="Enter folder name">
+        <button type="submit">Create folder</button>
+    </form>
+
+
+</html>

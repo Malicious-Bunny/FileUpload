@@ -28,7 +28,26 @@ model User {
   email     String   @unique
   password  String
   name      String
-
+  folders   Folder[]
+  files     File[]
 
   @@unique([name, email]) //so two users can't have the same name and email
+}
+
+model Folder {
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(255)
+  userId    Int
+  user      User   @relation(fields: [userId], references: [id])
+  files     File[]
+}
+
+model File {
+  id        Int   @id @default(autoincrement())
+  name      String
+  folderId  Int
+  folder    Folder @relation(fields: [folderId], references: [id])
+  userId    Int
+  user      User   @relation(fields: [userId], references: [id])
+  link      String
 }

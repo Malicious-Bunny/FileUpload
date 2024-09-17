@@ -6,6 +6,8 @@ const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
 const path = require('path');
 const authRouter = require('./routes/auth');
+const homeRouter = require('./routes/home');
+const folderRouter = require('./routes/folder');
 const logger = require('morgan');
 
 const app = express();
@@ -41,5 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use('/', authRouter);
+app.use('/home', homeRouter);
+app.use('/folder', folderRouter);
 
 app.listen(3000, () => console.log("Server is running at link: http://localhost:3000"));
