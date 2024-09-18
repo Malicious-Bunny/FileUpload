@@ -36,16 +36,7 @@ async function homeControllerPost(req, res) {
       name: folderName
     }
   });
-  console.log(folder);
-  const user = await prisma.user.findUnique({
-    where: {
-      id: userID
-    }
-  });
-
-  const username = user.name;
-
-    res.render('home', {folders: folder, username: username});
+  homeControllerget(req, res);
 }
 
 

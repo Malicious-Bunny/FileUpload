@@ -10,7 +10,6 @@ const homeRouter = require('./routes/home');
 const folderRouter = require('./routes/folder');
 const fileRouter = require('./routes/file');
 const logger = require('morgan');
-
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.use(logger('dev'));

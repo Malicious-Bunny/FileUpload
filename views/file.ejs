@@ -13,8 +13,10 @@
         <h3>file info</h4>
     </u>
 
+    
+
     <p>file name: <%= file.name %></p>
-    <p>file size: <%= file.size %></p>
+    <p>file size: <%= file.size/1000000 %> MB</p>
     <p>author: <%= author%></p>
     <p>created at: <%= file.createdAt %></p>
 

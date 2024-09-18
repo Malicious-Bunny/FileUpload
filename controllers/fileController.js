@@ -1,5 +1,7 @@
 const PrismaClient = require('@prisma/client').PrismaClient;
 
+const supabaseClient = require('../config/supabaseclient');
+
 const prisma = new PrismaClient();
 
 async function fileControllerGet(req, res){
@@ -11,7 +13,6 @@ async function fileControllerGet(req, res){
             id: fileID
         }
     });
-    console.log(file);
     const authorID = file.userId
 
     //get user name using authorID
@@ -20,6 +21,7 @@ async function fileControllerGet(req, res){
             id: authorID
         }
     });
+
 
     res.render('file', {file: file, author: author.name});
 }
